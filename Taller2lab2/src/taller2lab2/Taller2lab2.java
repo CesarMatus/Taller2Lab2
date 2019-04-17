@@ -5,6 +5,8 @@
  */
 package taller2lab2;
 
+import vista.ventanaInicio;
+
 /**
  *
  * @author cesar
@@ -16,6 +18,8 @@ public class Taller2lab2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ventanaInicio vi = new ventanaInicio();
+        vi.setVisible(true);
     }
     
 }

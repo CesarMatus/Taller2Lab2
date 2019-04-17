@@ -5,6 +5,8 @@
  */
 package vista;
 
+import contolador.ventanaInicioController;
+
 /**
  *
  * @author cesar
@@ -16,8 +18,16 @@ public class ventanaInicio extends javax.swing.JFrame {
      */
     public ventanaInicio() {
         initComponents();
+        registrarVentaButton.addActionListener((e)->{
+            abrirVentanaVenta();
+        });
+        
+        verReporteButton.addActionListener((e)->{
+            abrirVentanaReportes();
+        });
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,4 +123,14 @@ public class ventanaInicio extends javax.swing.JFrame {
     private javax.swing.JButton registrarVentaButton;
     private javax.swing.JButton verReporteButton;
     // End of variables declaration//GEN-END:variables
+
+    private void abrirVentanaVenta() {
+        ventanaVenta vv = new ventanaVenta(); 
+        vv.setVisible(true);
+    }
+
+    private void abrirVentanaReportes() {
+        ventanaReportes vr = new ventanaReportes();
+        vr.setVisible(true);
+    }
 }
