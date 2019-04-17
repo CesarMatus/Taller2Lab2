@@ -5,7 +5,7 @@
  */
 package vista;
 
-import contolador.ventanaInicioController;
+import controlador.ventanaInicioController;
 
 /**
  *
