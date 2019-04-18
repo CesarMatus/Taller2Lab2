@@ -5,10 +5,20 @@
  */
 package controlador;
 
+import vista.ventanaReportes;
+
 /**
  *
  * @author cesar
  */
 public class ventanaReportesController {
+    ventanaReportes vr;
+
+    public ventanaReportesController(ventanaReportes vr) {
+        this.vr = vr;
+    }
+    
+    //hola que tal?? estamos dao? wua xdxd
+    
     
 }
