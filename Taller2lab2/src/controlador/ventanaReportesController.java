@@ -27,13 +27,19 @@ public class ventanaReportesController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        vr.getjLabelMejorVendedor().setText(string);
+        
+        
+        
+        
+        
+        
+        /*vr.getjLabelMejorVendedor().setText(string);
         vr.getjLabelTotalVenta().setText(string);
         
         vr.getjLabelMejorVenta().setText(string);
         vr.getjLabelVendedor().setText(string);
         
-        vr.getjLabelPromedioVentas().setText(string);
+        vr.getjLabelPromedioVentas().setText(string);*/
     }
     
     
