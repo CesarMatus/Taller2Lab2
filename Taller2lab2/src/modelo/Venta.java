@@ -5,23 +5,23 @@ import java.util.Date;
 
 
 public class Venta {
-    private String vendedor;
+    private Vendedor vendedor;
     private String sucursal;
     private Date fecha;
     private int monto;
 
-    public Venta(String vendedor, String sucursal, Date fecha, int monto) {
+    public Venta(Vendedor vendedor, String sucursal, Date fecha, int monto) {
         this.vendedor = vendedor;
         this.sucursal = sucursal;
         this.fecha = fecha;
         this.monto = monto;
     }
 
-    public String getVendedor() {
+    public Vendedor getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(String vendedor) {
+    public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
     }
 

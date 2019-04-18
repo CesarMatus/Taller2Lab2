@@ -37,14 +37,15 @@ public class ventanaReportesController implements ActionListener{
         
         
         
+        Vendedor vendedor = buscarMejorVendedor();
+        vr.getjLabelMejorVendedor().setText(vendedor.getNombre()+" "+vendedor.getApellido());
+        vr.getjLabelTotalVenta().setText(totalVenta(vendedor)+"");
         
-        /*vr.getjLabelMejorVendedor().setText(string);
-        vr.getjLabelTotalVenta().setText(string);
+        vr.getjLabelMejorVenta().setText(mejorVenta()+"");
+        Vendedor mVVendedor= vendedorMejorVenta(mejorVenta()); 
+        vr.getjLabelVendedor().setText(mVVendedor.getNombre()+" "+mVVendedor.getApellido());
         
-        vr.getjLabelMejorVenta().setText(string);
-        vr.getjLabelVendedor().setText(string);
-        
-        vr.getjLabelPromedioVentas().setText(string);*/
+        vr.getjLabelPromedioVentas().setText(promedioVentas()+"");
     }
     
     public Vendedor buscarMejorVendedor (){
@@ -73,7 +74,7 @@ public class ventanaReportesController implements ActionListener{
         return vAux;
     }
     
-    public double totalVenta(Vendedor ve){
+    public int totalVenta(Vendedor ve){
         int total=0; 
         
         for (int i = 0; i < ventas.size(); i++) {
@@ -81,6 +82,43 @@ public class ventanaReportesController implements ActionListener{
                 total=total+ventas.get(i).getMonto();
             }
         }
+        return total; 
+    }
+    
+    public int mejorVenta(){
+        int mVenta = 0; 
+        Vendedor ve; 
+        for (int j = 0; j < vendedores.size(); j++) {
+            ve = vendedores.get(j);
+            for (int i = 0; i < ventas.size(); i++) {
+                if(ventas.get(i).getVendedor().equals(ve)){
+                    if(mVenta<ventas.get(i).getMonto()){
+                        mVenta=ventas.get(i).getMonto(); 
+                    }
+                }
+            }
+        }
+        return mVenta; 
+    }
+    
+    public Vendedor vendedorMejorVenta(int monto){
+        Vendedor v= null;  
+        for (int i = 0; i < ventas.size(); i++) {
+            if(ventas.get(i).getMonto()==monto){
+                v = ventas.get(i).getVendedor(); 
+            }
+            
+        }
+        return v; 
+    }
+    
+    public int promedioVentas(){
+        int total=0; 
+        for (int i = 0; i < ventas.size(); i++) {
+            total = total + ventas.get(i).getMonto(); 
+        }
+        total = total/ventas.size(); 
+        
         return total; 
     }
 }
