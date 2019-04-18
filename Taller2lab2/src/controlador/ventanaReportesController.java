@@ -7,6 +7,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import modelo.Vendedor;
+import modelo.Venta;
 import vista.ventanaInicio;
 import vista.ventanaReportes;
 
@@ -42,5 +45,32 @@ public class ventanaReportesController implements ActionListener{
         vr.getjLabelPromedioVentas().setText(string);*/
     }
     
-    
+    public Vendedor buscarMejorVendedor (){
+        
+        ArrayList <Venta> ventas = new ArrayList<>(); 
+        ArrayList<Vendedor> vendedores = new ArrayList<>(); 
+         
+        Vendedor vAux = null; 
+        
+        Vendedor ve = null;
+        int mayor = 0; 
+        int aux = 0; 
+        
+        for (int j = 0; j < 4; j++) {
+            ve = vendedores.get(j);
+            for (int i = 0; i < ventas.size(); i++) {
+                Venta v = ventas.get(i);
+                if(v.getVendedor().equals(ve)){
+                    aux++; 
+                    if(mayor<aux){
+                       mayor=aux;
+                       vAux=ve; 
+                    }
+                }
+            
+            }
+        }
+        
+        return vAux;
+    }
 }
