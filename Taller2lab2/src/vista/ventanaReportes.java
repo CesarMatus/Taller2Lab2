@@ -5,6 +5,8 @@
  */
 package vista;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Usuario
@@ -210,6 +212,47 @@ public class ventanaReportes extends javax.swing.JFrame {
         });
     }
 
+    public JLabel getjLabelMejorVendedor() {
+        return jLabelMejorVendedor;
+    }
+
+    public void setjLabelMejorVendedor(JLabel jLabelMejorVendedor) {
+        this.jLabelMejorVendedor = jLabelMejorVendedor;
+    }
+
+    public JLabel getjLabelMejorVenta() {
+        return jLabelMejorVenta;
+    }
+
+    public void setjLabelMejorVenta(JLabel jLabelMejorVenta) {
+        this.jLabelMejorVenta = jLabelMejorVenta;
+    }
+
+    public JLabel getjLabelPromedioVentas() {
+        return jLabelPromedioVentas;
+    }
+
+    public void setjLabelPromedioVentas(JLabel jLabelPromedioVentas) {
+        this.jLabelPromedioVentas = jLabelPromedioVentas;
+    }
+
+    public JLabel getjLabelTotalVenta() {
+        return jLabelTotalVenta;
+    }
+
+    public void setjLabelTotalVenta(JLabel jLabelTotalVenta) {
+        this.jLabelTotalVenta = jLabelTotalVenta;
+    }
+
+    public JLabel getjLabelVendedor() {
+        return jLabelVendedor;
+    }
+
+    public void setjLabelVendedor(JLabel jLabelVendedor) {
+        this.jLabelVendedor = jLabelVendedor;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonObtener;
     private javax.swing.JButton cerrarButton;
