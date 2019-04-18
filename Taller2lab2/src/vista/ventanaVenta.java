@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ventanaVentaController;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -17,8 +18,12 @@ public class ventanaVenta extends javax.swing.JFrame {
     /**
      * Creates new form ventanaVenta
      */
+        private ventanaVentaController vvc; 
+        
     public ventanaVenta() {
         initComponents();
+        vvc = new ventanaVentaController(this, vendedorBox, sucursalBox); 
+        
     }
 
     /**
@@ -30,6 +35,7 @@ public class ventanaVenta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,6 +46,8 @@ public class ventanaVenta extends javax.swing.JFrame {
         jTextFieldFecha = new javax.swing.JTextField();
         jTextFieldMonto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+
+        jFormattedTextField1.setText("jFormattedTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,9 +70,7 @@ public class ventanaVenta extends javax.swing.JFrame {
 
         sucursalBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextFieldFecha.setEditable(false);
-
-        jTextFieldMonto.setEditable(false);
+        jTextFieldFecha.setText("dd/mm/aaaa");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Registro Venta");
@@ -197,6 +203,7 @@ public class ventanaVenta extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

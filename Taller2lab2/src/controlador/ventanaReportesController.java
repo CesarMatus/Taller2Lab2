@@ -32,9 +32,7 @@ public class ventanaReportesController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
-        
-        
+          
         
         
         Vendedor vendedor = buscarMejorVendedor();
