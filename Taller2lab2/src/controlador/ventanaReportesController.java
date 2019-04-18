@@ -5,20 +5,32 @@
  */
 package controlador;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import vista.ventanaInicio;
 import vista.ventanaReportes;
 
 /**
  *
  * @author cesar
  */
-public class ventanaReportesController {
+public class ventanaReportesController implements ActionListener{
     ventanaReportes vr;
+    ventanaInicio vi; 
 
-    public ventanaReportesController(ventanaReportes vr) {
+    public ventanaReportesController(ventanaReportes vr,ventanaInicio vi) {
         this.vr = vr;
+        this.vi = vi; 
     }
     
     //hola que tal?? estamos dao? wua xdxd
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        vr.getjLabelMejorVendedor().setText(string);
+        vr.getjLabelMejorVenta().setText(string);
+        
+    }
     
     
 }
