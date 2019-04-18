@@ -20,6 +20,8 @@ import vista.ventanaReportes;
 public class ventanaReportesController implements ActionListener{
     ventanaReportes vr;
     ventanaInicio vi; 
+    ArrayList <Venta> ventas = new ArrayList<>(); 
+    ArrayList<Vendedor> vendedores = new ArrayList<>(); 
 
     public ventanaReportesController(ventanaReportes vr,ventanaInicio vi) {
         this.vr = vr;
@@ -47,16 +49,13 @@ public class ventanaReportesController implements ActionListener{
     
     public Vendedor buscarMejorVendedor (){
         
-        ArrayList <Venta> ventas = new ArrayList<>(); 
-        ArrayList<Vendedor> vendedores = new ArrayList<>(); 
-         
         Vendedor vAux = null; 
         
         Vendedor ve = null;
         int mayor = 0; 
         int aux = 0; 
         
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < vendedores.size(); j++) {
             ve = vendedores.get(j);
             for (int i = 0; i < ventas.size(); i++) {
                 Venta v = ventas.get(i);
@@ -72,5 +71,16 @@ public class ventanaReportesController implements ActionListener{
         }
         
         return vAux;
+    }
+    
+    public double totalVenta(Vendedor ve){
+        int total=0; 
+        
+        for (int i = 0; i < ventas.size(); i++) {
+            if(ventas.get(i).getVendedor().equals(ve)){
+                total=total+ventas.get(i).getMonto();
+            }
+        }
+        return total; 
     }
 }
