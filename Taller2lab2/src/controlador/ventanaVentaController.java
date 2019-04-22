@@ -31,7 +31,14 @@ public final class ventanaVentaController implements ActionListener{
 //        String v4 = vendedores.get(3).getNombre()+" "+vendedores.get(3).getApellido(); 
 //        vendedorBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { v1, v2, v3, v4}));
         
-        sucursalBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portal Temuco", "Centro", "Outlet Vivo", "Outlet Easton" }));
+this.vendedorBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {
+             
+            "Ana Ortega", "Gabriel Duarte", "Maria Contreras", "Juan Perez" }));
+        
+        
+
+        sucursalBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
+            "Portal Temuco", "Centro", "Outlet Vivo", "Outlet Easton" }));
         
         }
     
