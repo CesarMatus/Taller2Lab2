@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 public class Venta {
-//    private Vendedor vendedor;
+    private Vendedor vendedor;
     
     private int id_venta;
     private String sucursal;
@@ -13,12 +13,12 @@ public class Venta {
     private Date fecha;
     private int id_vendedor;
 
-//    public Venta(Vendedor vendedor, String sucursal, Date fecha, int monto) {
-//        this.vendedor = vendedor;
-//        this.sucursal = sucursal;
-//        this.fecha = fecha;
-//        this.monto = monto;
-//    }
+    public Venta(Vendedor vendedor, String sucursal, Date fecha, int monto) {
+        this.vendedor = vendedor;
+        this.sucursal = sucursal;
+        this.fecha = fecha;
+        this.monto = monto;
+    }
 
     public Venta(int id_venta, String sucursal, int monto, Date fecha, int id_vendedor) {
         this.id_venta = id_venta;
@@ -27,13 +27,13 @@ public class Venta {
         this.fecha = fecha;
         this.id_vendedor = id_vendedor;
     }
-//    public Vendedor getVendedor() {
-//        return vendedor;
-//    }
-//
-//    public void setVendedor(Vendedor vendedor) {
-//        this.vendedor = vendedor;
-//    }
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
 
     
 

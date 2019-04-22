@@ -1,6 +1,8 @@
 
 package controlador;
 
+import dao.VendedorDao;
+import dao.VentaDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
@@ -18,25 +20,25 @@ public final class ventanaVentaController implements ActionListener{
     private ventanaVenta vv;
     private javax.swing.JComboBox<String> vendedorBox;
     private javax.swing.JComboBox<String> sucursalBox;
-    ArrayList <Venta> ventas = new ArrayList<>(); 
-    ArrayList<Vendedor> vendedores = new ArrayList<>();
+    private VendedorDao vDao; 
+    private VentaDao ventaDao; 
+    
+    ArrayList <Venta> ventas; 
+    ArrayList<Vendedor> vendedores;
     
     public ventanaVentaController(ventanaVenta vv, javax.swing.JComboBox<String> vendedorBox,javax.swing.JComboBox<String> sucursalBox) {
         this.vv=vv;
         this.vendedorBox = vendedorBox; 
         
-//        String v1 = vendedores.get(0).getNombre()+" "+vendedores.get(0).getApellido(); 
-//        String v2 = vendedores.get(1).getNombre()+" "+vendedores.get(1).getApellido(); 
-//        String v3 = vendedores.get(2).getNombre()+" "+vendedores.get(2).getApellido(); 
-//        String v4 = vendedores.get(3).getNombre()+" "+vendedores.get(3).getApellido(); 
-//        vendedorBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { v1, v2, v3, v4}));
+        ventas= ventaDao.getVenta();
+        vendedores = vDao.getVendedores(); 
         
-this.vendedorBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {
-             
-            "Ana Ortega", "Gabriel Duarte", "Maria Contreras", "Juan Perez" }));
+        String v1 = vendedores.get(0).getNombre()+" "+vendedores.get(0).getApellido(); 
+        String v2 = vendedores.get(1).getNombre()+" "+vendedores.get(1).getApellido(); 
+        String v3 = vendedores.get(2).getNombre()+" "+vendedores.get(2).getApellido(); 
+        String v4 = vendedores.get(3).getNombre()+" "+vendedores.get(3).getApellido(); 
+        vendedorBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { v1, v2, v3, v4}));
         
-        
-
         sucursalBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
             "Portal Temuco", "Centro", "Outlet Vivo", "Outlet Easton" }));
         
