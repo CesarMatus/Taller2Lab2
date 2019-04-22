@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import java.util.ArrayList;
 import modelo.Vendedor;
+//import modelo.Vendedor;
 import modelo.Venta;
 
 
@@ -19,10 +20,12 @@ public class VentaDao {
     private VendedorDao vDao; 
     private ArrayList<Vendedor> vendedores;
 
+
     public VentaDao(/*Conexion con*/) {
         this.con = new Conexion();
         vendedores = vDao.getVendedores(); 
     }
+  
     
      public ArrayList<Venta> getVenta(){
         
@@ -43,7 +46,7 @@ public class VentaDao {
             while ( resultados.next() ) {
           
                 
-                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta"))-1);
+                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta")));
                 String sucursal = resultados.getString("sucursal");
                 Date fecha = resultados.getDate("fecha");
                 int monto = Integer.parseInt(resultados.getString("monto"));
@@ -101,7 +104,7 @@ public class VentaDao {
             
             while ( resultados.next() ) {
                 
-                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta"))-1);
+                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta")));
                 String sucursal = resultados.getString("sucursal");
                 int monto = Integer.parseInt(resultados.getString("monto"));
                 Date fecha = resultados.getDate("fecha");
@@ -133,7 +136,7 @@ public class VentaDao {
            
             
             while ( resultados.next() ) {
-                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta"))-1);
+                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta")));
                 String sucursal = resultados.getString("sucursal");
                 int monto = Integer.parseInt(resultados.getString("monto"));
                 Date fecha = resultados.getDate("fecha");

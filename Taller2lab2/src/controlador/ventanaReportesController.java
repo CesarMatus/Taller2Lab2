@@ -25,8 +25,8 @@ public class ventanaReportesController implements ActionListener{
     ArrayList <Venta> ventas; 
     ArrayList<Vendedor> vendedores; 
     private javax.swing.JComboBox<String> mesesBox;
-    private VendedorDao vDao; 
-    private VentaDao ventaDao; 
+    private VendedorDao vDao = new VendedorDao(); 
+    private VentaDao ventaDao = new VentaDao(); 
     
 
     public ventanaReportesController(ventanaReportes vr,ventanaInicio vi,javax.swing.JComboBox<String> mesesBox) {

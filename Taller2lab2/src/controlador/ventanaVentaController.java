@@ -29,8 +29,11 @@ public final class ventanaVentaController implements ActionListener{
         this.vv=vv;
         this.vendedorBox = vendedorBox; 
         
+        System.out.println("bueno");
         
         vendedores = vDao.getVendedores(); 
+        
+        System.out.println("bueno");
         
         String v1 = vendedores.get(0).getNombre()+" "+vendedores.get(0).getApellido(); 
         String v2 = vendedores.get(1).getNombre()+" "+vendedores.get(1).getApellido(); 

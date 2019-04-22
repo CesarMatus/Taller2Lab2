@@ -17,14 +17,13 @@ import modelo.Vendedor;
  */
 public class VendedorDao {
     Conexion con;
-    private VendedorDao vDao; 
 
     public VendedorDao(/*Conexion con*/) {
         this.con = new Conexion();
     }
     
     public ArrayList<Vendedor> getVendedores(){
-        ArrayList<Vendedor> vendedores = vDao.getVendedores();
+        ArrayList<Vendedor> vendedores = new ArrayList<>();
         Connection accesoBD = con.getConexion();
         try{
             String sql="SELECT * FROM vendedor ";
