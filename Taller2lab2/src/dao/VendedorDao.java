@@ -33,12 +33,12 @@ public class VendedorDao {
             ResultSet resultados = st.executeQuery(sql);
             
             while ( resultados.next() ) {
-                int = Integer.parseInt(resultados.getString("id"));
+                int id_vendedor= Integer.parseInt(resultados.getString("id_vendedor"));
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
                 String rut = resultados.getString("rut");               
                 
-                vendedores.add(new Vendedor(id, nombre, apellido, rut));
+                vendedores.add(new Vendedor(id_vendedor, nombre, apellido, rut));
             }
             accesoBD.close();
             return vendedores;

@@ -64,13 +64,13 @@ public class ventanaReportesController implements ActionListener{
             ve = vendedores.get(j);
             for (int i = 0; i < ventas.size(); i++) {
                 Venta v = ventas.get(i);
-                if(v.getVendedor().equals(ve)){
-                    aux++; 
-                    if(mayor<aux){
-                       mayor=aux;
-                       vAux=ve; 
-                    }
-                }
+//                if(v.getVendedor().equals(ve)){
+//                    aux++; 
+//                    if(mayor<aux){
+//                       mayor=aux;
+//                       vAux=ve; 
+//                    }
+//                }
             
             }
         }
@@ -81,11 +81,11 @@ public class ventanaReportesController implements ActionListener{
     public int totalVenta(Vendedor ve){
         int total=0; 
         
-        for (int i = 0; i < ventas.size(); i++) {
-            if(ventas.get(i).getVendedor().equals(ve)){
-                total=total+ventas.get(i).getMonto();
-            }
-        }
+//        for (int i = 0; i < ventas.size(); i++) {
+//            if(ventas.get(i).getVendedor().equals(ve)){
+//                total=total+ventas.get(i).getMonto();
+//            }
+//        }
         return total; 
     }
     
@@ -94,25 +94,25 @@ public class ventanaReportesController implements ActionListener{
         Vendedor ve; 
         for (int j = 0; j < vendedores.size(); j++) {
             ve = vendedores.get(j);
-            for (int i = 0; i < ventas.size(); i++) {
-                if(ventas.get(i).getVendedor().equals(ve)){
-                    if(mVenta<ventas.get(i).getMonto()){
-                        mVenta=ventas.get(i).getMonto(); 
-                    }
-                }
-            }
+//            for (int i = 0; i < ventas.size(); i++) {
+//                if(ventas.get(i).getVendedor().equals(ve)){
+//                    if(mVenta<ventas.get(i).getMonto()){
+//                        mVenta=ventas.get(i).getMonto(); 
+//                    }
+//                }
+//            }
         }
         return mVenta; 
     }
     
     public Vendedor vendedorMejorVenta(int monto){
         Vendedor v= null;  
-        for (int i = 0; i < ventas.size(); i++) {
-            if(ventas.get(i).getMonto()==monto){
-                v = ventas.get(i).getId_vendedor(); 
-            }
-            
-        }
+//        for (int i = 0; i < ventas.size(); i++) {
+//            if(ventas.get(i).getMonto()==monto){
+//                v = ventas.get(i).getId_vendedor(); 
+//            }
+//            
+//        }
         return v; 
     }
     

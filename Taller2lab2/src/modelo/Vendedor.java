@@ -10,24 +10,24 @@ package modelo;
  * @author cesar
  */
 public class Vendedor {
-    private int id; 
+    private int id_vendedor; 
     private String nombre;
     private String apellido; 
     private String rut; 
 
-    public Vendedor(int id, String nombre, String apellido, String rut) {
-        this.id = id;
+    public Vendedor(int id_vendedor, String nombre, String apellido, String rut) {
+        this.id_vendedor = id_vendedor;
         this.nombre = nombre;
         this.apellido = apellido;
         this.rut = rut;
     }
 
-    public int getId() {
-        return id;
+    public int getId_vendedor() {
+        return id_vendedor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int id_vendedor) {
+        this.id_vendedor = id_vendedor;
     }
 
     public String getNombre() {
