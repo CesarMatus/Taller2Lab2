@@ -91,7 +91,7 @@ public class VentaDao {
         Connection accesoBD = con.getConexion();
 
         try{
-            String sql="SELECT * FROM venta WHERE fecha BETWEEN '2018-"+mes+"-01' and '2018-10-31'";
+            String sql="SELECT * FROM venta WHERE fecha BETWEEN '2019-"+mes+"-01' and '2018-10-31'";
             
             //System.out.println(sql);
             Statement st = accesoBD.createStatement();
