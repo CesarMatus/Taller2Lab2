@@ -109,7 +109,7 @@ public class ventanaReportesController implements ActionListener{
         Vendedor v= null;  
         for (int i = 0; i < ventas.size(); i++) {
             if(ventas.get(i).getMonto()==monto){
-                v = ventas.get(i).getVendedor(); 
+                v = ventas.get(i).getId_vendedor(); 
             }
             
         }

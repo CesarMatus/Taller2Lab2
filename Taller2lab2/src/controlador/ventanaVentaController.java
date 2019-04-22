@@ -44,7 +44,7 @@ this.vendedorBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        int idVendedor = vendedores.get(vv.getVendedorBox().getItemCount()).getId(); 
+        int idVendedor = vendedores.get(vv.getVendedorBox().getItemCount()).getId_vendedor(); 
         
         String sucursal = vv.getSucursalBox().getItemAt(vv.getSucursalBox().getItemCount());  
         
