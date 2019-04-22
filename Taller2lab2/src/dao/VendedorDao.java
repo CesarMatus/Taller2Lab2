@@ -18,8 +18,8 @@ import modelo.Vendedor;
 public class VendedorDao {
     Conexion con;
 
-    public VendedorDao(/*Conexion con*/) {
-        this.con = new Conexion();
+    public VendedorDao(Conexion con) {
+        this.con = con;
     }
     
     public ArrayList<Vendedor> getVendedores(){
