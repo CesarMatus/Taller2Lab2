@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.ventanaReportesController;
 import javax.swing.JLabel;
 
 /**
@@ -12,12 +13,27 @@ import javax.swing.JLabel;
  * @author Usuario
  */
 public class ventanaReportes extends javax.swing.JFrame {
-
+    private ventanaReportesController vrc; 
+    private ventanaInicio vi; 
     /**
      * Creates new form ventanaReportes
      */
     public ventanaReportes() {
         initComponents();
+        vi = new ventanaInicio(); 
+        vrc = new ventanaReportesController(this, vi, mesesBox);
+        
+//        ButtonObtener.addActionListener((e)->{
+//            obtenerDatos();
+//        });
+        
+        imprimirButton.addActionListener((e)->{
+            imprimirVentanaReportes();
+        });
+        
+        cerrarButton.addActionListener((e)->{
+            cerrarVentanaReportes();
+        });
     }
 
     /**
@@ -29,6 +45,9 @@ public class ventanaReportes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         mesesBox = new javax.swing.JComboBox<>();
         ButtonObtener = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -47,6 +66,12 @@ public class ventanaReportes extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 32767));
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -279,8 +304,23 @@ public class ventanaReportes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPromedioVentas;
     private javax.swing.JLabel jLabelTotalVenta;
     private javax.swing.JLabel jLabelVendedor;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JComboBox<String> mesesBox;
     // End of variables declaration//GEN-END:variables
+
+//    private void obtenerDatos() {
+//        
+//    }
+
+    private void imprimirVentanaReportes() {
+        System.out.println("Se esta Imprimiendo");
+    }
+
+    private void cerrarVentanaReportes() {
+        this.setVisible(false);
+    }
 }

@@ -22,10 +22,16 @@ public class ventanaReportesController implements ActionListener{
     ventanaInicio vi; 
     ArrayList <Venta> ventas = new ArrayList<>(); 
     ArrayList<Vendedor> vendedores = new ArrayList<>(); 
+    private javax.swing.JComboBox<String> mesesBox;
 
-    public ventanaReportesController(ventanaReportes vr,ventanaInicio vi) {
+    public ventanaReportesController(ventanaReportes vr,ventanaInicio vi,javax.swing.JComboBox<String> mesesBox) {
         this.vr = vr;
         this.vi = vi; 
+        this.mesesBox = mesesBox;
+        
+        
+          mesesBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero","Marzo",
+              "Abril", "Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre" }));
     }
     
     //hola que tal?? estamos dao? wua xdxd
