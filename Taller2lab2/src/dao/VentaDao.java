@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import java.util.ArrayList;
-//import modelo.Vendedor;
+import modelo.Vendedor;
 import modelo.Venta;
 
 
@@ -17,8 +17,8 @@ public class VentaDao {
     
     Conexion con;
 
-    public VentaDao(Conexion con) {
-        this.con = con;
+    public VentaDao(/*Conexion con*/) {
+        this.con = new Conexion();
     }
     
      public ArrayList<Venta> getVenta(){
