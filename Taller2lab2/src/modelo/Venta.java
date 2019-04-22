@@ -20,13 +20,13 @@ public class Venta {
         this.monto = monto;
     }
 
-    public Venta(int id_venta, String sucursal, int monto, Date fecha, int id_vendedor) {
-        this.id_venta = id_venta;
-        this.sucursal = sucursal;
-        this.monto = monto;
-        this.fecha = fecha;
-        this.id_vendedor = id_vendedor;
-    }
+//    public Venta(int id_venta, String sucursal, int monto, Date fecha, int id_vendedor) {
+//        this.id_venta = id_venta;
+//        this.sucursal = sucursal;
+//        this.monto = monto;
+//        this.fecha = fecha;
+//        this.id_vendedor = id_vendedor;
+//    }
     public Vendedor getVendedor() {
         return vendedor;
     }

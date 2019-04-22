@@ -23,14 +23,13 @@ public final class ventanaVentaController implements ActionListener{
     private VendedorDao vDao; 
     private VentaDao ventaDao; 
     
-    ArrayList <Venta> ventas; 
-    ArrayList<Vendedor> vendedores;
+    ArrayList<Vendedor> vendedores = new ArrayList<>(); 
     
     public ventanaVentaController(ventanaVenta vv, javax.swing.JComboBox<String> vendedorBox,javax.swing.JComboBox<String> sucursalBox) {
         this.vv=vv;
         this.vendedorBox = vendedorBox; 
         
-        ventas= ventaDao.getVenta();
+        
         vendedores = vDao.getVendedores(); 
         
         String v1 = vendedores.get(0).getNombre()+" "+vendedores.get(0).getApellido(); 
@@ -48,6 +47,8 @@ public final class ventanaVentaController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         int idVendedor = vendedores.get(vv.getVendedorBox().getItemCount()).getId_vendedor(); 
         
+        Vendedor vendedor = vendedores.get(vv.getVendedorBox().getItemCount());
+        
         String sucursal = vv.getSucursalBox().getItemAt(vv.getSucursalBox().getItemCount());  
         
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/mm/yyyy");
@@ -60,6 +61,11 @@ public final class ventanaVentaController implements ActionListener{
         }
         
         int monto = Integer.parseInt(vv.getjTextFieldMonto().getText()); 
+        
+        Venta venta = new Venta(vendedor, sucursal, fecha, monto); 
+        
+        ventaDao.ingresarVenta(venta); 
+        
     }
     
     

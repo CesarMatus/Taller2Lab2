@@ -16,9 +16,12 @@ public class VentaDao {
     VALUES (NULL, 'portal', '20000', '2019-04-17', '2');*/
     
     Conexion con;
+    private VendedorDao vDao; 
+    private ArrayList<Vendedor> vendedores;
 
     public VentaDao(/*Conexion con*/) {
         this.con = new Conexion();
+        vendedores = vDao.getVendedores(); 
     }
     
      public ArrayList<Venta> getVenta(){
@@ -38,16 +41,14 @@ public class VentaDao {
             ResultSet resultados = st.executeQuery(sql);
             
             while ( resultados.next() ) {
+          
                 
-//                Vendedor vendedor = resultados.getObject(sql);
-                
-                
-                int id_venta= Integer.parseInt(resultados.getString("id_venta"));
+                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta"))-1);
                 String sucursal = resultados.getString("sucursal");
                 Date fecha = resultados.getDate("fecha");
                 int monto = Integer.parseInt(resultados.getString("monto"));
                
-                ventas.add(new Venta(id_venta, sucursal, monto, fecha, monto));
+                ventas.add(new Venta(vendedor, sucursal, fecha, monto));
                 
             }
             accesoBD.close();
@@ -91,7 +92,7 @@ public class VentaDao {
         Connection accesoBD = con.getConexion();
 
         try{
-            String sql="SELECT * FROM venta WHERE fecha BETWEEN '2019-"+mes+"-01' and '2018-10-31'";
+            String sql="SELECT * FROM venta WHERE fecha BETWEEN '2019-"+mes+"-01' and '2019-"+mes+"-31'";
             
             //System.out.println(sql);
             Statement st = accesoBD.createStatement();
@@ -100,13 +101,13 @@ public class VentaDao {
             
             while ( resultados.next() ) {
                 
-                int idVenta = Integer.parseInt(resultados.getString("id_venta"));
+                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta"))-1);
                 String sucursal = resultados.getString("sucursal");
                 int monto = Integer.parseInt(resultados.getString("monto"));
                 Date fecha = resultados.getDate("fecha");
                 int idVendedor = Integer.parseInt(resultados.getString("id_vendedor"));
                 
-                ventas.add(new Venta(idVenta,sucursal,monto,fecha,idVendedor));
+                ventas.add(new Venta(vendedor, sucursal, fecha, monto));
             }
             accesoBD.close();
             return ventas;
@@ -132,12 +133,12 @@ public class VentaDao {
            
             
             while ( resultados.next() ) {
-                int idVenta = Integer.parseInt(resultados.getString("id_venta"));
+                Vendedor vendedor= vendedores.get(Integer.parseInt(resultados.getString("id_venta"))-1);
                 String sucursal = resultados.getString("sucursal");
                 int monto = Integer.parseInt(resultados.getString("monto"));
                 Date fecha = resultados.getDate("fecha");
                 int idVendedor = Integer.parseInt(resultados.getString("id_vendedor"));
-                ventas.add(new Venta(idVenta,sucursal,monto,fecha,idVendedor));
+                ventas.add(new Venta(vendedor, sucursal, fecha, monto));
             }
             accesoBD.close();
             return ventas;
