@@ -20,8 +20,8 @@ public final class ventanaVentaController implements ActionListener{
     private VendedorDao vDao; 
     private javax.swing.JComboBox<String> vendedorBox;
     private javax.swing.JComboBox<String> sucursalBox;
-    ArrayList <Venta> ventas = new ArrayList<>(); 
-    ArrayList<Vendedor> vendedores = new ArrayList<>();
+    ArrayList <Venta> ventas; 
+    ArrayList<Vendedor> vendedores;
     
     public ventanaVentaController(ventanaVenta vv, javax.swing.JComboBox<String> vendedorBox,javax.swing.JComboBox<String> sucursalBox) {
         this.vv=vv;
@@ -37,7 +37,7 @@ public final class ventanaVentaController implements ActionListener{
         
 //        this.vendedorBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {
 //             
-//            "Ana Ortega", "Gabriel Duarte", "Maria Contreras", "Juan Perez" }));
+//            "1", "Gabriel Duarte", "Maria Contreras", "Juan Perez" }));
         
         
 
@@ -62,6 +62,8 @@ public final class ventanaVentaController implements ActionListener{
         }
         
         int monto = Integer.parseInt(vv.getjTextFieldMonto().getText()); 
+        
+        
     }
     
     
