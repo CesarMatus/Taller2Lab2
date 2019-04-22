@@ -17,8 +17,8 @@ public class VentaDao {
     
     Conexion con;
 
-    public VentaDao(Conexion con) {
-        this.con = con;
+    public VentaDao(/*Conexion con*/) {
+        this.con = new Conexion();
     }
     
      public ArrayList<Venta> getVenta(){
