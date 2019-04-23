@@ -51,8 +51,9 @@ public class ventanaReportesController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
          
-        
-        
+        String nMes = mesesBox.getActionCommand(); 
+        String mes = transformarMes(nMes); 
+                
         Vendedor vendedor = buscarMejorVendedor(ventaDao.getVentasMes(mes));
         vr.getjLabelMejorVendedor().setText(vendedor.getNombre()+" "+vendedor.getApellido());
         vr.getjLabelTotalVenta().setText(totalVenta(vendedor)+"");
@@ -137,5 +138,34 @@ public class ventanaReportesController implements ActionListener{
         
         return total; 
     }
-
+    
+    public String transformarMes(String mes){
+        if(mes.equals("Enero")){
+            return "01"; 
+        } else if(mes.equals("Febrero")){
+            return "02"; 
+        }else if(mes.equals("Marzo")){
+            return "03"; 
+        }else if(mes.equals("Abril")){
+            return "04"; 
+        }else if(mes.equals("Mayo")){
+            return "05"; 
+        }else if(mes.equals("Junio")){
+            return "06"; 
+        }else if(mes.equals("Julio")){
+            return "07"; 
+        }else if(mes.equals("Agosto")){
+            return "08"; 
+        }else if(mes.equals("Septiembre")){
+            return "09"; 
+        }else if(mes.equals("Octubre")){
+            return "10"; 
+        }else if(mes.equals("Noviembre")){
+            return "11"; 
+        }else if(mes.equals("Diciembre")){
+            return "12"; 
+        }else{
+            return null;
+        }    
+    }
 }
