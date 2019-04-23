@@ -53,16 +53,18 @@ public class ventanaReportesController implements ActionListener{
          
         String nMes = (String) mesesBox.getSelectedItem();
         String mes = transformarMes(nMes); 
-                
-        Vendedor vendedor = buscarMejorVendedor(vendedores,ventaDao.getVentasMes(mes));
-        vr.getjLabelMejorVendedor().setText(vendedor.getNombre()+" "+vendedor.getApellido());
-        vr.getjLabelTotalVenta().setText(totalVenta(vendedor,ventaDao.getVentasMes(mes))+"");
         
-        vr.getjLabelMejorVenta().setText(mejorVenta(ventaDao.getVentasMes(mes))+"");
-        Vendedor mVVendedor= vendedorMejorVenta(ventaDao.getVentasMes(mes));  
+        ArrayList <Venta> ventillas = ventaDao.getVentasMes(mes);
+                
+        Vendedor vendedor = buscarMejorVendedor(vendedores,ventillas);
+        vr.getjLabelMejorVendedor().setText(vendedor.getNombre()+" "+vendedor.getApellido());
+        vr.getjLabelTotalVenta().setText(Integer.toString(totalVenta(vendedor,ventillas)));
+        
+        vr.getjLabelMejorVenta().setText(mejorVenta(ventillas)+"");
+        Vendedor mVVendedor= vendedorMejorVenta(ventillas);  
         vr.getjLabelVendedor().setText(mVVendedor.getNombre()+" "+mVVendedor.getApellido());
         
-        vr.getjLabelPromedioVentas().setText(promedioVentas(ventaDao.getVentasMes(mes))+"");
+        vr.getjLabelPromedioVentas().setText(promedioVentas(ventillas)+"");
     }
     
     public Vendedor buscarMejorVendedor (ArrayList<Vendedor> vendedores ,ArrayList <Venta> ventas){

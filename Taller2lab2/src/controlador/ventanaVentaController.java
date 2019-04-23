@@ -55,7 +55,7 @@ public final class ventanaVentaController implements ActionListener{
         
         Vendedor vendedor = vendedores.get(vv.getVendedorBox().getItemCount()-1);
         
-        String sucursal = vv.getSucursalBox().getItemAt(vv.getSucursalBox().getItemCount()-1);  
+        String sucursal = vv.getSucursalBox().getItemAt(vv.getSucursalBox().getItemCount());  
        
         int monto = Integer.parseInt(vv.getjTextFieldMonto().getText()); 
         
@@ -65,8 +65,8 @@ public final class ventanaVentaController implements ActionListener{
         
     }
     
-    public Date fechaDate(String fecha){
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+    public java.sql.Date fechaDate(String fecha){
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         Date f = null; 
         try {
             f = (Date) formato.parse(fecha);
