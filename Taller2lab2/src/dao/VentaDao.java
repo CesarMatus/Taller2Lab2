@@ -17,7 +17,7 @@ public class VentaDao {
     VALUES (NULL, 'portal', '20000', '2019-04-17', '2');*/
     
     Conexion con;
-    private VendedorDao vDao; 
+    private VendedorDao vDao = new VendedorDao(); 
     private ArrayList<Vendedor> vendedores;
 
 

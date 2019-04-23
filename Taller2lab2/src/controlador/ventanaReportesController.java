@@ -34,7 +34,7 @@ public class ventanaReportesController implements ActionListener{
         this.vi = vi; 
         this.mesesBox = mesesBox;
         
-        ventas= ventaDao.getVenta();
+        
         vendedores = vDao.getVendedores();
         
           mesesBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero","Marzo",
@@ -45,10 +45,11 @@ public class ventanaReportesController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-          
+         
+       mesesBox.getActionCommand();
         
         
-        Vendedor vendedor = buscarMejorVendedor();
+        Vendedor vendedor = buscarMejorVendedor(ventaDao.getVentasMes(mes));
         vr.getjLabelMejorVendedor().setText(vendedor.getNombre()+" "+vendedor.getApellido());
         vr.getjLabelTotalVenta().setText(totalVenta(vendedor)+"");
         
@@ -59,7 +60,7 @@ public class ventanaReportesController implements ActionListener{
         vr.getjLabelPromedioVentas().setText(promedioVentas()+"");
     }
     
-    public Vendedor buscarMejorVendedor (){
+    public Vendedor buscarMejorVendedor (ArrayList <Venta> ventas){
         
         Vendedor vAux = null; 
         

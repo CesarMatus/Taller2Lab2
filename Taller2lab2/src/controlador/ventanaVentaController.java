@@ -20,8 +20,8 @@ public final class ventanaVentaController implements ActionListener{
     private ventanaVenta vv;
     private javax.swing.JComboBox<String> vendedorBox;
     private javax.swing.JComboBox<String> sucursalBox;
-    private VendedorDao vDao; 
-    private VentaDao ventaDao; 
+    private VendedorDao vDao = new VendedorDao(); 
+    private VentaDao ventaDao =  new VentaDao(); 
     
     ArrayList<Vendedor> vendedores = new ArrayList<>(); 
     

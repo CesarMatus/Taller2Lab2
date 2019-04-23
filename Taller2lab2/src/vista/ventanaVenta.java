@@ -70,7 +70,7 @@ public class ventanaVenta extends javax.swing.JFrame {
 
         sucursalBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextFieldFecha.setText("dd/mm/aaaa");
+        jTextFieldFecha.setText("aaaa/mm/dd");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Registro Venta");
