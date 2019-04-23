@@ -23,9 +23,9 @@ public class ventanaReportes extends javax.swing.JFrame {
         vi = new ventanaInicio(); 
         vrc = new ventanaReportesController(this, vi, mesesBox);
         
-//        ButtonObtener.addActionListener((e)->{
-//            obtenerDatos();
-//        });
+        ButtonObtener.addActionListener((e)->{
+            vrc.actionPerformed(e);
+        });
         
         imprimirButton.addActionListener((e)->{
             imprimirVentanaReportes();

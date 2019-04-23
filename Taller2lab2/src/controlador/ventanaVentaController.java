@@ -8,11 +8,14 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import modelo.Vendedor;
 import modelo.Venta;
 import vista.ventanaVenta;
+import java.sql.Date;
 
 
 public final class ventanaVentaController implements ActionListener{
@@ -48,30 +51,31 @@ public final class ventanaVentaController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        int idVendedor = vendedores.get(vv.getVendedorBox().getItemCount()).getId_vendedor(); 
+        int idVendedor = vendedores.get(vv.getVendedorBox().getItemCount()-1).getId_vendedor(); 
         
-        Vendedor vendedor = vendedores.get(vv.getVendedorBox().getItemCount());
+        Vendedor vendedor = vendedores.get(vv.getVendedorBox().getItemCount()-1);
         
-        String sucursal = vv.getSucursalBox().getItemAt(vv.getSucursalBox().getItemCount());  
-        
-        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/mm/yyyy");
-        String f = vv.getjTextFieldFecha().getText();
-        Date fecha = null; 
-        try {
-            fecha = (Date) formatoDelTexto.parse(f);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        
+        String sucursal = vv.getSucursalBox().getItemAt(vv.getSucursalBox().getItemCount()-1);  
+       
         int monto = Integer.parseInt(vv.getjTextFieldMonto().getText()); 
         
-        Venta venta = new Venta(vendedor, sucursal, fecha, monto); 
+        Venta venta = new Venta(vendedor, sucursal, fechaDate(vv.getjTextFieldFecha().getText()), monto); 
         
         ventaDao.ingresarVenta(venta); 
         
     }
     
-    
+    public Date fechaDate(String fecha){
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+        Date f = null; 
+        try {
+            f = (Date) formato.parse(fecha);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        java.sql.Date fechaSQL = new java.sql.Date(f.getTime());
+        return fechaSQL;   
+    } 
     
     
     

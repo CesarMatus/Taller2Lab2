@@ -51,85 +51,120 @@ public class ventanaReportesController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
          
-        String nMes = mesesBox.getActionCommand(); 
+        String nMes = (String) mesesBox.getSelectedItem();
         String mes = transformarMes(nMes); 
                 
-        Vendedor vendedor = buscarMejorVendedor(ventaDao.getVentasMes(mes));
+        Vendedor vendedor = buscarMejorVendedor(vendedores,ventaDao.getVentasMes(mes));
         vr.getjLabelMejorVendedor().setText(vendedor.getNombre()+" "+vendedor.getApellido());
-        vr.getjLabelTotalVenta().setText(totalVenta(vendedor)+"");
+        vr.getjLabelTotalVenta().setText(totalVenta(vendedor,ventaDao.getVentasMes(mes))+"");
         
-        vr.getjLabelMejorVenta().setText(mejorVenta()+"");
-        Vendedor mVVendedor= vendedorMejorVenta(mejorVenta()); 
+        vr.getjLabelMejorVenta().setText(mejorVenta(ventaDao.getVentasMes(mes))+"");
+        Vendedor mVVendedor= vendedorMejorVenta(ventaDao.getVentasMes(mes));  
         vr.getjLabelVendedor().setText(mVVendedor.getNombre()+" "+mVVendedor.getApellido());
         
-        vr.getjLabelPromedioVentas().setText(promedioVentas()+"");
+        vr.getjLabelPromedioVentas().setText(promedioVentas(ventaDao.getVentasMes(mes))+"");
     }
     
-    public Vendedor buscarMejorVendedor (ArrayList <Venta> ventas){
+    public Vendedor buscarMejorVendedor (ArrayList<Vendedor> vendedores ,ArrayList <Venta> ventas){
         
-        Vendedor vAux = null; 
+        int montoMaximo = 0; 
+        int monto; 
+//        ArrayList <Venta> ventitas;
+        Vendedor v; 
+        Vendedor vAux = null;  
         
-        Vendedor ve = null;
-        int mayor = 0; 
-        int aux = 0; 
-        
-        for (int j = 0; j < vendedores.size(); j++) {
-            ve = vendedores.get(j);
-            for (int i = 0; i < ventas.size(); i++) {
-                Venta v = ventas.get(i);
-                if(v.getVendedor().equals(ve)){
-                    aux++; 
-                    if(mayor<aux){
-                       mayor=aux;
-                       vAux=ve; 
-                    }
-                }
-            
-            }
-        }
-        
-        return vAux;
-    }
-    
-    public int totalVenta(Vendedor ve){
-        int total=0; 
-        
-        for (int i = 0; i < ventas.size(); i++) {
-            if(ventas.get(i).getVendedor().equals(ve)){
-                total=total+ventas.get(i).getMonto();
-            }
-        }
-        return total; 
-    }
-    
-    public int mejorVenta(){
-        int mVenta = 0; 
-        Vendedor ve; 
-        for (int j = 0; j < vendedores.size(); j++) {
-            ve = vendedores.get(j);
-            for (int i = 0; i < ventas.size(); i++) {
-                if(ventas.get(i).getVendedor().equals(ve)){
-                    if(mVenta<ventas.get(i).getMonto()){
-                        mVenta=ventas.get(i).getMonto(); 
-                    }
+        for (int i = 0; i < vendedores.size(); i++) {
+            v = vendedores.get(i);
+            monto=0; 
+            for (int j = 0; j < ventas.size(); j++) {
+                if(v.getId_vendedor()==ventas.get(j).getVendedor().getId_vendedor()){
+                } else { 
+                    monto = monto + ventas.get(j).getMonto();
                 }
             }
-        }
-        return mVenta; 
-    }
-    
-    public Vendedor vendedorMejorVenta(int monto){
-        Vendedor v= null;  
-        for (int i = 0; i < ventas.size(); i++) {
-            if(ventas.get(i).getMonto()==monto){
-                v = ventas.get(i).getVendedor(); 
+            if(montoMaximo < monto){
+                montoMaximo = monto; 
+                vAux=v; 
             }
             
         }
-        return v; 
+        
+//        for (int i = 0; i < vendedores.size(); i++) {
+//            for (int j = 0; j < 10; j++) {
+//                for (int k = 0; k < 10; k++) {
+//                    if(ventas.get(j).)
+//                }
+//            }
+//            ventitas = ventaDao.getVentasVendedor(vendedores.get(i).getId_vendedor()); 
+//            v = vendedores.get(i);
+//            monto = 0;
+//            for (int j = 0; j < ventitas.size(); j++) {
+//                monto = monto + ventitas.get(j).getMonto(); 
+//            }
+//               if(montoMaximo<monto){
+//                   montoMaximo = monto; 
+//                   vAux = v; 
+//                }
+//                
+//        }
+//        
+        return vAux; 
+
     }
     
-    public int promedioVentas(){
+    public int totalVenta(Vendedor v,ArrayList <Venta> ventas){
+        int monto = 0; 
+        Vendedor vAux = null;  
+         
+            for (int j = 0; j < ventas.size(); j++) {
+                if(v.getId_vendedor() == ventas.get(j).getVendedor().getId_vendedor()){
+                } else { 
+                    monto = monto + ventas.get(j).getMonto();
+                }
+            }
+        
+        return monto; 
+    }
+    
+    public int mejorVenta(ArrayList <Venta> ventas){
+        int mejorVenta = 0; 
+        int venta;
+        Vendedor v = null; 
+        Vendedor vAux = null;  
+        
+        for (int i = 0; i < ventas.size(); i++) {
+            v = vendedores.get(i);
+            venta = ventas.get(i).getMonto();
+            if(mejorVenta<venta){
+                mejorVenta= venta; 
+                vAux=v; 
+            }
+            
+        }
+        
+        return mejorVenta;  
+    }
+    
+    public Vendedor vendedorMejorVenta(ArrayList <Venta> ventas){
+        int mejorVenta = 0; 
+        int venta;
+        Vendedor v = null; 
+        Vendedor vAux = null;  
+        
+        for (int i = 0; i < ventas.size(); i++) {
+            v = vendedores.get(i);
+            venta = ventas.get(i).getMonto();
+            if(mejorVenta<venta){
+                mejorVenta= venta; 
+                vAux=v; 
+            }
+            
+        }
+        
+        return vAux; 
+    }
+    
+    public int promedioVentas(ArrayList <Venta> ventas){
         int total=0; 
         for (int i = 0; i < ventas.size(); i++) {
             total = total + ventas.get(i).getMonto(); 
@@ -140,32 +175,33 @@ public class ventanaReportesController implements ActionListener{
     }
     
     public String transformarMes(String mes){
-        if(mes.equals("Enero")){
-            return "01"; 
-        } else if(mes.equals("Febrero")){
-            return "02"; 
-        }else if(mes.equals("Marzo")){
-            return "03"; 
-        }else if(mes.equals("Abril")){
-            return "04"; 
-        }else if(mes.equals("Mayo")){
-            return "05"; 
-        }else if(mes.equals("Junio")){
-            return "06"; 
-        }else if(mes.equals("Julio")){
-            return "07"; 
-        }else if(mes.equals("Agosto")){
-            return "08"; 
-        }else if(mes.equals("Septiembre")){
-            return "09"; 
-        }else if(mes.equals("Octubre")){
-            return "10"; 
-        }else if(mes.equals("Noviembre")){
-            return "11"; 
-        }else if(mes.equals("Diciembre")){
-            return "12"; 
-        }else{
-            return null;
-        }    
+        switch (mes) {
+            case "Enero":
+                return "01";
+            case "Febrero":
+                return "02";
+            case "Marzo":
+                return "03";
+            case "Abril":
+                return "04";
+            case "Mayo":
+                return "05";
+            case "Junio":
+                return "06";
+            case "Julio":
+                return "07";
+            case "Agosto":
+                return "08";
+            case "Septiembre":
+                return "09";
+            case "Octubre":
+                return "10";
+            case "Noviembre":
+                return "11";
+            case "Diciembre":
+                return "12";
+            default:
+                return null;    
+        }
     }
 }

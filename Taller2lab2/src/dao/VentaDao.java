@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 import java.util.ArrayList;
 import modelo.Vendedor;
