@@ -24,15 +24,20 @@ public class ventanaReportesController implements ActionListener{
     ventanaInicio vi; 
     ArrayList <Venta> ventas; 
     ArrayList<Vendedor> vendedores; 
+    
+    
     private javax.swing.JComboBox<String> mesesBox;
     private VendedorDao vDao = new VendedorDao(); 
     private VentaDao ventaDao = new VentaDao(); 
+   
     
 
     public ventanaReportesController(ventanaReportes vr,ventanaInicio vi,javax.swing.JComboBox<String> mesesBox) {
         this.vr = vr;
         this.vi = vi; 
         this.mesesBox = mesesBox;
+        
+        
         
         
         vendedores = vDao.getVendedores();
@@ -46,7 +51,6 @@ public class ventanaReportesController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
          
-       mesesBox.getActionCommand();
         
         
         Vendedor vendedor = buscarMejorVendedor(ventaDao.getVentasMes(mes));
@@ -133,4 +137,5 @@ public class ventanaReportesController implements ActionListener{
         
         return total; 
     }
+
 }
